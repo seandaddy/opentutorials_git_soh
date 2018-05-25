@@ -1,20 +1,22 @@
-public static void getPrime(int num) {
-	int i = 2;
-	boolean isPrime = true;
+void getChe(int num) {
+    int *arr;
+    arr = (int *)malloc(sizeof(int) * num);
+    int i = 2;
 
-	while (i <= num) {
-		isPrime = true;
+    for (i = 2; i <= num; i++) {
+        arr[i] = i;
+    }
 
-		for (int n = 2; n < i; n++) {
-			if (i % n == 0) {
-				isPrime = false;
-        break;
-			}
-			continue;
-		}
+    for (i = 2; i <= sqrt(num); i++) {
+        if (arr[i] == 0)
+            continue;
+        for (int j = i + i; j <= num; j += i) {
+            arr[j] = 0;
+        }
+    }
 
-		if (isPrime == true)
-			System.out.println(i);
-		i++;
-	}
+    for (i = 2; i <= num; i++) {
+        if (arr[i] != 0)
+            cout << arr[i] << " ";
+    }
 }
