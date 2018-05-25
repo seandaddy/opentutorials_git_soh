@@ -6,8 +6,8 @@ void getChe(int num) {
     for (i = 2; i <= num; i++) {
         arr[i] = i;
     }
-
-    for (i = 2; i <= sqrt(num); i++) {
+		int sqrtNum = sqrt(num);
+    for (i = 2; i <= sqrtNum; i++) {
         if (arr[i] == 0)
             continue;
         for (int j = i + i; j <= num; j += i) {
