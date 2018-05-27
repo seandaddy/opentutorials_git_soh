@@ -11,4 +11,4 @@ function getPrimes(max) {
     }
     return primes;
 }
-getPrimes(100000)
+getPrimes(1000000)

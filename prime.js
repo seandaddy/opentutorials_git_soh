@@ -1,27 +1,38 @@
-public class PrimeNumber1 {
-	public static void getPrime(int num, ArrayList<Integer> prime) {
-		prime.add(2);
+function primeSieve(n){
+  var a = Array(n = n/2),
+      t = (Math.sqrt(4+8*n)-2)/4,
+      u = 0,
+      r = [];
+  for(var i = 1; i <= t; i++){
+    u = (n-i)/(1+2*i);
+    for(var j = i; j <= u; j++) a[i + j + 2*i*j] = true;
+  }
+  for(var i = 0; i<= n; i++) !a[i] && r.push(i*2+1);
+  return r;
+}
 
-		for (int i = 2; i <= num; i++) {
-			for (int j = 0; prime.size() > j; j++) {
-				if (i % prime.get(j) == 0) break; // not prime pass
+var primes = [];
+console.time("primes");
+primes = primeSieve(1000000);
+console.timeEnd("primes");
+console.log(primes.length);
 
-				if (j + 1 == prime.size()) // prime
-					prime.add(i);
+function getPrime(num) {
+	int i = 2;
+	boolean isPrime = true;
+
+	while (i <= num) {
+		isPrime = true;
+
+		for (int n = 2; n < i; n++) {
+			if (i % n == 0) {
+				isPrime = false;
 			}
+			continue;
 		}
 
-		for (Integer result : prime) {
-			System.out.println(result);
-		}
-	}
-
-	public static void main(String[] args) {
-		ArrayList<Integer> prime = new ArrayList<Integer>();
-
-		long start = System.currentTimeMillis();
-		getPrime(30000, prime);
-		long end = System.currentTimeMillis();
-		System.out.println("Elapsed Time : " + (end - start));
+		if (isPrime == true)
+			System.out.println(i);
+		i++;
 	}
 }
